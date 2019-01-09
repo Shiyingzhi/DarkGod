@@ -1,0 +1,5 @@
+D:\Documents\DarkGod\DarkGodSever\MainSever\DarkGodAgreement\bin\Debug\DarkGodAgreement.dll
+D:\Documents\DarkGod\DarkGodSever\MainSever\DarkGodAgreement\bin\Debug\DarkGodAgreement.pdb
+D:\Documents\DarkGod\DarkGodSever\MainSever\DarkGodAgreement\obj\Debug\DarkGodAgreement.csprojResolveAssemblyReference.cache
+D:\Documents\DarkGod\DarkGodSever\MainSever\DarkGodAgreement\obj\Debug\DarkGodAgreement.dll
+D:\Documents\DarkGod\DarkGodSever\MainSever\DarkGodAgreement\obj\Debug\DarkGodAgreement.pdb
