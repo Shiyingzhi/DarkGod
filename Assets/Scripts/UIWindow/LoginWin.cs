@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using DarkGodAgreement;
 public class LoginWin : UIWinBase {
 
     public InputField inputUser;
@@ -38,7 +38,8 @@ public class LoginWin : UIWinBase {
             string pass = inputPass.text;
             PlayerPrefs.SetString("User", user);
             PlayerPrefs.SetString("Pass", pass);
-
+            string SendStr = string.Format("{0},{1}",inputPass.text,inputUser.text);
+            NetSvc.instance.SendSys(GameSys.登录, SendStr);
             LogonSys.instance.SelectRole();
         }
         else

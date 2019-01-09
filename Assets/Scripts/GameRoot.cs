@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Net;
+using System.Net.Sockets;
+using System.Text;
+using System;
+using DarkGodAgreement;
 
 public class GameRoot : MonoBehaviour {
     public static GameRoot intance = null;
@@ -12,12 +17,17 @@ public class GameRoot : MonoBehaviour {
     private LogonSys mLogonSys;
     private ResSvc mResSvc;
     private AudioSvc mAudioSvc;
+    private NetSvc mNetSvc;
+    
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         intance = this;
         InitCanvas();
         Init();
+
 	}
+
+    
     void InitCanvas()
     {
         Transform canvas = transform.Find("Canvas").transform;
@@ -32,6 +42,8 @@ public class GameRoot : MonoBehaviour {
         //初始化服务模块
         mResSvc = GetComponent<ResSvc>();
         mResSvc.InitSvc();
+        mNetSvc = GetComponent<NetSvc>();
+        mNetSvc.InitSvc();
 
         mAudioSvc = GetComponent<AudioSvc>();
         mAudioSvc.Init();

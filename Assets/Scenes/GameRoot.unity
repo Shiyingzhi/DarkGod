@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 361736589}
   - component: {fileID: 361736591}
   - component: {fileID: 361736588}
+  - component: {fileID: 361736592}
   m_Layer: 0
   m_Name: GameRoot
   m_TagString: Untagged
@@ -335,6 +336,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgAduio: {fileID: 79707178}
   butAduio: {fileID: 1005867621}
+--- !u!114 &361736592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361736586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c700ff4edb7132c4980406a01b66056e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &422172729
 Prefab:
   m_ObjectHideFlags: 0
@@ -597,6 +609,11 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224439528772501586, guid: 6fbd6530dcc63e54db7e441c360a2e78,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -399.80078
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fbd6530dcc63e54db7e441c360a2e78, type: 2}
