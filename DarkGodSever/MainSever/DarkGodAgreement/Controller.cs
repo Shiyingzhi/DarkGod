@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-
 namespace DarkGodAgreement
 {
-    public enum GameSys
+    public enum MethodController
     {
-        登录,
-        注册,
-        退出游戏
+        LogonGame,
+        Register,
+        EixtGame
     }
 }
