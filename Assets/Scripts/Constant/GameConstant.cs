@@ -5,10 +5,11 @@ using UnityEngine;
 public class GameConstant {
     //场景
     public const string LogonScene = "SampleScene";
+    public const string MainGameScene = "SceneMainCity";
 
     //BG音效
-    public const string BgMuisc = "bgLogin";
-
+    public const string BgLogon = "bgLogin";
+    public const string BgMainCity = "bgMainCity";
     //进入游戏按钮音效
     public const string ButIntoGame = "uiLoginBtn";
 

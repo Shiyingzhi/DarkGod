@@ -7,6 +7,7 @@ public class LogonSys : MonoBehaviour {
 
     public LoginWin mLoginWin;
     public CreateWin mCreateWin;
+    public RegisterWin mRegisterWin;
     public void InitSys()
     {
         instance = this;
@@ -19,10 +20,11 @@ public class LogonSys : MonoBehaviour {
         ResSvc.intance.AsyncLoadScene(GameConstant.LogonScene, () =>
             {
                 mLoginWin.isShow();
-                AudioSvc.instance.PlayBgClip(GameConstant.BgMuisc,true);
             });
     }
-
+    /// <summary>
+    /// 进入选择角色面板
+    /// </summary>
     public void SelectRole()
     {
         //释放登录面板
@@ -32,5 +34,5 @@ public class LogonSys : MonoBehaviour {
         GameRoot.ShowHint("登录成功");
 
     }
-
+    
 }

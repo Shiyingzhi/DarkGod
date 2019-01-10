@@ -27,7 +27,7 @@ public class ResSvc : MonoBehaviour {
     /// </summary>
     public void AsyncLoadScene(string sceneName,Action callBack ) 
     {
-        GameRoot.intance.mLogonWin.isShow();
+        GameRoot.intance.mLoadingWin.isShow(); 
         
 
         AsyncOperation SceneAsync = SceneManager.LoadSceneAsync(sceneName);
@@ -81,7 +81,7 @@ public class ResSvc : MonoBehaviour {
 
     #region 解析Xml文件
     private List<string> surnameList = new List<string>();
-    private List<string> manList = new List<string>();
+    private List<string> manList = new List<string>(); 
     private List<string> womanList = new List<string>();
     private void InitXml()
     {

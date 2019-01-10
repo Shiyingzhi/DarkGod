@@ -12,6 +12,7 @@ public class LoginWin : UIWinBase {
 
     protected override void InitWin()
     {
+        AudioSvc.instance.PlayBgClip(GameConstant.BgLogon, true); 
         if (PlayerPrefs.HasKey("User") && PlayerPrefs.HasKey("Pass"))
         {
             inputUser.text = PlayerPrefs.GetString("User");
@@ -40,7 +41,7 @@ public class LoginWin : UIWinBase {
             PlayerPrefs.SetString("Pass", pass);
             string SendStr = string.Format("{0},{1}", inputUser.text, inputPass.text);
             NetSvc.instance.SendSys(GameSys.登录,MethodController.LogonGame, SendStr);
-            LogonSys.instance.SelectRole();
+            
         }
         else
         {
@@ -51,6 +52,8 @@ public class LoginWin : UIWinBase {
     public void OnHelpClick()
     {
         AudioSvc.instance.PlayButClip(GameConstant.ButOnClick);
-        GameRoot.ShowHint("正在开发中....");
+        LogonSys.instance.mLoginWin.isShow(false);
+        LogonSys.instance.mRegisterWin.isShow();
+        
     }
 }

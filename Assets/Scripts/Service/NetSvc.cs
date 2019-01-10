@@ -11,7 +11,6 @@ public class NetSvc : MonoBehaviour {
 
     public static NetSvc instance;
     Socket ClientSoc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-
     private byte[] data = new byte[1024];
     public void InitSvc()
     {
@@ -27,26 +26,42 @@ public class NetSvc : MonoBehaviour {
         Debug.Log(DataCount);
         if (DataCount > 0)
         {
-            string str = Encoding.UTF8.GetString(data);
+            
+            string str = Encoding.UTF8.GetString(data,6,DataCount);
+            Debug.Log(str);
             string[] strArry = str.Split('|');
             ReturnSys LogonSys = (ReturnSys)(int.Parse(strArry[0]));
-            switch (LogonSys)
-            {
-                case ReturnSys.登录失败:
-                    Debug.Log("账号密码错误");
-                    break;
-                case ReturnSys.登录成功:
-                    Debug.Log("登录成功进入游戏");
-                    break;
-            }
+            ControllerManage.instance.SelectController(LogonSys, strArry[1]);
         }
         clinet.BeginReceive(data, 0, data.Length, SocketFlags.None, AsyncReceive, clinet);
     }
-
+    /// <summary>
+    /// 发送系统请求
+    /// </summary>
+    /// <param name="sys"></param>
+    /// <param name="controller"></param>
+    /// <param name="str"></param>
     public void SendSys(GameSys sys,MethodController controller,string str)
     {
         string strByte = string.Format("{0}|{1}|{2}", ((int)controller).ToString(), ((int)sys).ToString(), str);
         Debug.Log(strByte);
         ClientSoc.Send(Tool.GetBytes(strByte));
+    }
+
+    public void CloseClient()
+    {
+        if (ClientSoc != null && ClientSoc.Connected)
+        {
+
+            //关闭Socket之前，首选需要把双方的Socket Shutdown掉
+            ClientSoc.Shutdown(SocketShutdown.Both);
+
+            //Shutdown掉Socket后主线程停止10ms，保证Socket的Shutdown完成
+            System.Threading.Thread.Sleep(10);
+
+            //关闭客户端Socket,清理资源
+            ClientSoc.Close();
+
+        }
     }
 }

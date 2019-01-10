@@ -30,6 +30,12 @@ public class CreateWin : UIWinBase {
         {
             //TODO
             //发送网络请求
+            ResSvc.intance.AsyncLoadScene(GameConstant.MainGameScene, () =>
+                {
+                    LogonSys.instance.mLoginWin.isShow(false);
+                    LogonSys.instance.mCreateWin.isShow(false);
+                    MainGameSys.instance.mGameWin.isShow();
+                });
         }
     }
 }

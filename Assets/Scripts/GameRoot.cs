@@ -13,12 +13,17 @@ public class GameRoot : MonoBehaviour {
     public LoadingWin mLoadingWin;
     public HintWin mHintWin;
 
+    public Action mRetrueAction = null;
 
     private LogonSys mLogonSys;
     private ResSvc mResSvc;
     private AudioSvc mAudioSvc;
     private NetSvc mNetSvc;
-    
+    private ControllerManage mControllerMag;
+    private MainGameSys mMainGameSys;
+
+    private int id;
+    public int ID { get { return id; } set { id = value; } }
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         intance = this;
@@ -42,6 +47,7 @@ public class GameRoot : MonoBehaviour {
         //初始化服务模块
         mResSvc = GetComponent<ResSvc>();
         mResSvc.InitSvc();
+
         mNetSvc = GetComponent<NetSvc>();
         mNetSvc.InitSvc();
 
@@ -52,6 +58,13 @@ public class GameRoot : MonoBehaviour {
         mLogonSys = GetComponent<LogonSys>();
         mLogonSys.InitSys();
 
+        mMainGameSys = GetComponent<MainGameSys>();
+        mMainGameSys.InitMainGameSys();
+        //初始化控制器模块
+        mControllerMag = new ControllerManage();
+        mControllerMag.InitController();
+
+
         //进入登录系统
         mLogonSys.EnterLogin();
 
@@ -59,5 +72,22 @@ public class GameRoot : MonoBehaviour {
     public static void ShowHint(string str)
     {
         intance.mHintWin.AddHint(str);
+    }
+
+    void Update()
+    {
+        if (mRetrueAction != null)
+        {
+            Debug.Log("执行");
+            mRetrueAction();
+            mRetrueAction = null; 
+        }
+    }
+    void OnDestroy()
+    {
+        mNetSvc.SendSys(GameSys.退出游戏, MethodController.EixtGame, ID.ToString());
+
+        NetSvc.instance.CloseClient();
+        
     }
 }
