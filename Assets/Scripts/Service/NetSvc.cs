@@ -43,10 +43,10 @@ public class NetSvc : MonoBehaviour {
         clinet.BeginReceive(data, 0, data.Length, SocketFlags.None, AsyncReceive, clinet);
     }
 
-    public void SendSys(GameSys sys,string str)
+    public void SendSys(GameSys sys,MethodController controller,string str)
     {
-        string strByte = string.Format("{0}|{1}", ((int)sys).ToString(), str);
-        byte[] SendByte = Encoding.UTF8.GetBytes(strByte);
-        ClientSoc.Send(SendByte);
+        string strByte = string.Format("{0}|{1}|{2}", ((int)controller).ToString(), ((int)sys).ToString(), str);
+        Debug.Log(strByte);
+        ClientSoc.Send(Tool.GetBytes(strByte));
     }
 }
