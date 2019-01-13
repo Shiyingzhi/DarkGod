@@ -8,7 +8,7 @@ public class RegisterComeNothingController:BaseController
 {
     public RegisterComeNothingController()
     {
-        currentReturnSys = ReturnSys.注册失败;
+        mCurrentReturnSys = ReturnSys.注册失败;
     }
     public override void ProcessMessage(ReturnSys sys, string data)
     {

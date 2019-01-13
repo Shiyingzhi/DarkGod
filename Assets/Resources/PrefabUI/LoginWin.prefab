@@ -488,10 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9565087b73eaaa44cb387c532640244e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputUser: {fileID: 114680061197281330}
-  inputPass: {fileID: 114007166604245180}
-  inToBut: {fileID: 114937865409512750}
-  hintBut: {fileID: 114497495077832124}
+  mInputUser: {fileID: 114680061197281330}
+  mInputPass: {fileID: 114007166604245180}
 --- !u!114 &114497495077832124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -987,8 +985,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1334, y: 750}
+  m_AnchoredPosition: {x: 0.00005722, y: 0}
+  m_SizeDelta: {x: 1200, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224168349299745370
 RectTransform:

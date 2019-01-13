@@ -12,6 +12,9 @@ public class NetSvc : MonoBehaviour {
     public static NetSvc instance;
     Socket ClientSoc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
     private byte[] data = new byte[1024];
+    /// <summary>
+    /// 初始化Net服务
+    /// </summary>
     public void InitSvc()
     {
         instance = this;
@@ -19,6 +22,10 @@ public class NetSvc : MonoBehaviour {
         ClientSoc.BeginReceive(data, 0, data.Length, SocketFlags.None, AsyncReceive, ClientSoc);
         Debug.Log("建立连接");
     }
+    /// <summary>
+    /// 异步接受消息
+    /// </summary>
+    /// <param name="ar"></param>
     private void AsyncReceive(IAsyncResult ar)
     {
         Socket clinet = ar.AsyncState as Socket;
@@ -47,7 +54,9 @@ public class NetSvc : MonoBehaviour {
         Debug.Log(strByte);
         ClientSoc.Send(Tool.GetBytes(strByte));
     }
-
+    /// <summary>
+    /// 关闭客户端
+    /// </summary>
     public void CloseClient()
     {
         if (ClientSoc != null && ClientSoc.Connected)

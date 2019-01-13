@@ -8,7 +8,7 @@ public class RegisterController:BaseController
 {
     public RegisterController()
     {
-        currentReturnSys = ReturnSys.注册成功;
+        mCurrentReturnSys = ReturnSys.注册成功;
     }
     public override void ProcessMessage(ReturnSys sys, string data)
     {

@@ -7,9 +7,15 @@ public class AudioSvc : MonoBehaviour {
 
     public AudioSource bgAduio;
     public AudioSource butAduio;
-
-    public void Init() { instance = this; }
-
+    /// <summary>
+    /// 初始化音乐服务
+    /// </summary>
+    public void InitAudio() { instance = this; }
+    /// <summary>
+    /// 播放背景音乐
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="isLoop"></param>
     public void PlayBgClip(string name, bool isLoop)
     {
         if (bgAduio.clip == null || bgAduio.name != name)
@@ -20,7 +26,10 @@ public class AudioSvc : MonoBehaviour {
             bgAduio.Play();
         }
     }
-
+    /// <summary>
+    /// 播放声音片段
+    /// </summary>
+    /// <param name="name"></param>
     public void PlayButClip(string name)
     {
         AudioClip clip = ResSvc.intance.LoadCiip(name, true);

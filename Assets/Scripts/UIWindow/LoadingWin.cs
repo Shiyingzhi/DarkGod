@@ -5,26 +5,33 @@ using UnityEngine.UI;
 
 public class LoadingWin : UIWinBase {
 
-    public Text textTips;
-    public Image imgFG;
-    public Image imgPoint;
-    public Text textPrg;
+    public Text mTextTips;
+    public Image mImgFG;
+    public Image mImgPoint;
+    public Text mTextPrg;
 
     private float fgWidth;
+    /// <summary>
+    /// 初始化
+    /// </summary>
     protected override void InitWin()
     {
         fgWidth = GetComponent<RectTransform>().sizeDelta.x;
 
-        textTips.text = "";
-        textPrg.text = "0%";
-        imgFG.fillAmount = 0;
-        imgPoint.transform.localPosition = new Vector3(-620, 5.3f, 0);
+        mTextTips.text = "";
+        mTextPrg.text = "0%";
+        mImgFG.fillAmount = 0;
+        mImgPoint.transform.localPosition = new Vector3(-620, 5.3f, 0);
     }
+    /// <summary>
+    /// 更新进度条
+    /// </summary>
+    /// <param name="prg"></param>
     public void SetProgress(float prg)
     {
-        textPrg.text = ((int)(prg * 100)).ToString() + "%";
-        imgFG.fillAmount = prg;
+        mTextPrg.text = ((int)(prg * 100)).ToString() + "%";
+        mImgFG.fillAmount = prg;
 
-        imgPoint.GetComponent<RectTransform>().anchoredPosition = new Vector2(prg * fgWidth, 0);
+        mImgPoint.GetComponent<RectTransform>().anchoredPosition = new Vector2(prg * fgWidth, 0);
     }
 }

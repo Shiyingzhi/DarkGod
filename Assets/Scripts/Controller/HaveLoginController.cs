@@ -8,7 +8,7 @@ public class HaveLoginController:BaseController
 {
     public HaveLoginController()
     {
-        currentReturnSys = ReturnSys.账号已登录;
+        mCurrentReturnSys = ReturnSys.账号已登录;
     }
     public override void ProcessMessage(ReturnSys sys, string data)
     {

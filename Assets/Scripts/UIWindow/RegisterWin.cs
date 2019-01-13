@@ -4,34 +4,45 @@ using UnityEngine;
 using UnityEngine.UI;
 using DarkGodAgreement;
 public class RegisterWin : UIWinBase {
-    public InputField inpUser;
-    public InputField inpPassword;
-    public InputField inpRegisterPassword;
+    public InputField mInpUser;
+    public InputField mInpPassword;
+    public InputField mInpRegisterPassword;
     public Animation mAnimation;
+    /// <summary>
+    /// 初始化
+    /// </summary>
     protected override void InitWin()
     {
         mAnimation.Play();
-        inpUser.text = "";
-        inpPassword.text = "";
-        inpRegisterPassword.text = "";
+        mInpUser.text = "";
+        mInpPassword.text = "";
+        mInpRegisterPassword.text = "";
     }
+    /// <summary>
+    /// 关闭时回调
+    /// </summary>
     protected override void RelWin()
     {
         this.gameObject.SetActive(false);
     }
+    /// <summary>
+    /// 返回按钮
+    /// </summary>
     public void OnCloseClick()
     {
         LogonSys.instance.mRegisterWin.isShow(false);
         LogonSys.instance.mLoginWin.isShow();
     }
-
+    /// <summary>
+    /// 注册按钮
+    /// </summary>
     public void OnRegisterButClick()
     {
-        if (inpUser.text != "" && inpPassword.text != "" || inpRegisterPassword.text != "")
+        if (mInpUser.text != "" && mInpPassword.text != "" || mInpRegisterPassword.text != "")
         {
-            if (inpPassword.text == inpRegisterPassword.text)
+            if (mInpPassword.text == mInpRegisterPassword.text)
             {
-                string SendStr = string.Format("{0},{1}", inpUser.text, inpPassword.text);
+                string SendStr = string.Format("{0},{1}", mInpUser.text, mInpPassword.text);
                 NetSvc.instance.SendSys(GameSys.注册, MethodController.Register, SendStr);
             }
             else

@@ -8,6 +8,9 @@ public class LogonSys : MonoBehaviour {
     public LoginWin mLoginWin;
     public CreateWin mCreateWin;
     public RegisterWin mRegisterWin;
+    /// <summary>
+    /// 初始化登录系统
+    /// </summary>
     public void InitSys()
     {
         instance = this;

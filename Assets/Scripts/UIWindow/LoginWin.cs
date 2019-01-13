@@ -5,41 +5,45 @@ using UnityEngine.UI;
 using DarkGodAgreement;
 public class LoginWin : UIWinBase {
 
-    public InputField inputUser;
-    public InputField inputPass;
-    public Button inToBut;
-    public Button hintBut;
-
+    public InputField mInputUser;
+    public InputField mInputPass;
+    /// <summary>
+    /// 初始化
+    /// </summary>
     protected override void InitWin()
     {
         AudioSvc.instance.PlayBgClip(GameConstant.BgLogon, true); 
         if (PlayerPrefs.HasKey("User") && PlayerPrefs.HasKey("Pass"))
         {
-            inputUser.text = PlayerPrefs.GetString("User");
-            inputPass.text = PlayerPrefs.GetString("Pass");
+            mInputUser.text = PlayerPrefs.GetString("User");
+            mInputPass.text = PlayerPrefs.GetString("Pass");
         }
         else
         {
-            inputUser.text = "";
-            inputPass.text = "";
+            mInputUser.text = "";
+            mInputPass.text = "";
         }
     }
-
+    /// <summary>
+    /// 关闭时回调
+    /// </summary>
     protected override void RelWin()
     {
         this.gameObject.SetActive(false);
     }
-
+    /// <summary>
+    /// 进入游戏按钮
+    /// </summary>
     public void OnInToClick()
     {
         AudioSvc.instance.PlayButClip(GameConstant.ButIntoGame);
-        if (inputUser.text != "" && inputPass.text != "")
+        if (mInputUser.text != "" && mInputPass.text != "")
         {
-            string user = inputUser.text;
-            string pass = inputPass.text;
+            string user = mInputUser.text;
+            string pass = mInputPass.text;
             PlayerPrefs.SetString("User", user);
             PlayerPrefs.SetString("Pass", pass);
-            string SendStr = string.Format("{0},{1}", inputUser.text, inputPass.text);
+            string SendStr = string.Format("{0},{1}", mInputUser.text, mInputPass.text);
             NetSvc.instance.SendSys(GameSys.登录,MethodController.LogonGame, SendStr);
             
         }
@@ -48,7 +52,9 @@ public class LoginWin : UIWinBase {
             GameRoot.ShowHint("用户名密码不能为空");
         }
     }
-
+    /// <summary>
+    /// 注册游戏按钮
+    /// </summary>
     public void OnHelpClick()
     {
         AudioSvc.instance.PlayButClip(GameConstant.ButOnClick);

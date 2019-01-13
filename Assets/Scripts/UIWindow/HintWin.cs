@@ -10,10 +10,17 @@ public class HintWin : UIWinBase {
 
     private Queue<string> HintQue = new Queue<string>();
     private bool isShowHint;
+    /// <summary>
+    /// 初始化
+    /// </summary>
     protected override void InitWin()
     {
         mText.gameObject.SetActive(false);
     }
+    /// <summary>
+    /// 添加显示信息
+    /// </summary>
+    /// <param name="str"></param>
     public void AddHint(string str)
     {
         lock (HintQue)
@@ -30,6 +37,10 @@ public class HintWin : UIWinBase {
             ShowHint(str);
         }
     }
+    /// <summary>
+    /// 显示提示信息
+    /// </summary>
+    /// <param name="str"></param>
     private void ShowHint(string str)
     {
         mText.gameObject.SetActive(true);
@@ -44,6 +55,12 @@ public class HintWin : UIWinBase {
             }));
     }
 
+    /// <summary>
+    /// 携程等待当前信息显示完毕继续播放
+    /// </summary>
+    /// <param name="time"></param>
+    /// <param name="call"></param>
+    /// <returns></returns>
     private IEnumerator WaitTime(float time, Action call)
     {
         yield return new WaitForSeconds(time);

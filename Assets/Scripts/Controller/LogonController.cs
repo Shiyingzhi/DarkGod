@@ -9,15 +9,15 @@ public class LogonController:BaseController
 {
     public LogonController()
     {
-        currentReturnSys = ReturnSys.登录成功;
+        mCurrentReturnSys = ReturnSys.登录成功;
     }
     public override void ProcessMessage(ReturnSys sys, string data)
     {
         Debug.Log(data.Length);
         DisposeData(sys, () =>
             {
+                //设置用户id
                 GameRoot.intance.ID = int.Parse(data);
-                Debug.Log(GameRoot.intance.ID);
                 LogonSys.instance.SelectRole();
             });
         

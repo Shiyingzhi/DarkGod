@@ -24,6 +24,9 @@ public class GameRoot : MonoBehaviour {
 
     private int id;
     public int ID { get { return id; } set { id = value; } }
+    /// <summary>
+    /// 游戏总启动
+    /// </summary>
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         intance = this;
@@ -32,7 +35,9 @@ public class GameRoot : MonoBehaviour {
 
 	}
 
-    
+    /// <summary>
+    /// 初始化显示
+    /// </summary>
     void InitCanvas()
     {
         Transform canvas = transform.Find("Canvas").transform;
@@ -42,6 +47,9 @@ public class GameRoot : MonoBehaviour {
         }
         mHintWin.isShow();  
     }
+    /// <summary>
+    /// 初始化所有模块
+    /// </summary>
     void Init()
     {
         //初始化服务模块
@@ -52,7 +60,7 @@ public class GameRoot : MonoBehaviour {
         mNetSvc.InitSvc();
 
         mAudioSvc = GetComponent<AudioSvc>();
-        mAudioSvc.Init();
+        mAudioSvc.InitAudio();
 
         //初始化业务系统
         mLogonSys = GetComponent<LogonSys>();
@@ -69,6 +77,10 @@ public class GameRoot : MonoBehaviour {
         mLogonSys.EnterLogin();
 
     }
+    /// <summary>
+    /// 显示提示
+    /// </summary>
+    /// <param name="str"></param>
     public static void ShowHint(string str)
     {
         intance.mHintWin.AddHint(str);
@@ -83,6 +95,10 @@ public class GameRoot : MonoBehaviour {
             mRetrueAction = null; 
         }
     }
+
+    /// <summary>
+    /// 向服务器发送退出请求
+    /// </summary>
     void OnDestroy()
     {
         mNetSvc.SendSys(GameSys.退出游戏, MethodController.EixtGame, ID.ToString());

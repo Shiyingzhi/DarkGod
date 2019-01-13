@@ -10,6 +10,9 @@ public class ControllerManage
     private Dictionary<ReturnSys, BaseController> ServerMassageController = new Dictionary<ReturnSys, BaseController>();
 
     public static ControllerManage instance;
+    /// <summary>
+    /// 初始化控制器
+    /// </summary>
     public void InitController()
     {
         instance = this;
@@ -19,7 +22,11 @@ public class ControllerManage
         ServerMassageController.Add(ReturnSys.注册失败, new RegisterComeNothingController());
         ServerMassageController.Add(ReturnSys.账号已登录, new HaveLoginController());
     }
-    
+    /// <summary>
+    /// 选择控制器
+    /// </summary>
+    /// <param name="sys"></param>
+    /// <param name="data"></param>
     public void SelectController(ReturnSys sys,string data)
     {
         BaseController currentController = null;

@@ -6,6 +6,11 @@ using System.Text;
 
 public class Tool
 {
+    /// <summary>
+    /// string类型转换byte[]
+    /// </summary>
+    /// <param name="str"></param>
+    /// <returns></returns>
     public static byte[] GetBytes(string str)
     {
         byte[] Date = Encoding.UTF8.GetBytes(str);//将参数转换为byte[]

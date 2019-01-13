@@ -182,10 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57be5866946b5cc4e84c435266bfb4dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textTips: {fileID: 114911258242510218}
-  imgFG: {fileID: 114494647184400764}
-  imgPoint: {fileID: 114721926280945484}
-  textPrg: {fileID: 114739899055175806}
+  mTextTips: {fileID: 114911258242510218}
+  mImgFG: {fileID: 114494647184400764}
+  mImgPoint: {fileID: 114721926280945484}
+  mTextPrg: {fileID: 114739899055175806}
 --- !u!114 &114494647184400764
 MonoBehaviour:
   m_ObjectHideFlags: 1

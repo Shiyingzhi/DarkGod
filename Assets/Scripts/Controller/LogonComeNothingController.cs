@@ -8,7 +8,7 @@ public class LogonComeNothingController:BaseController
 {
     public LogonComeNothingController()
     {
-        currentReturnSys = ReturnSys.登录失败;
+        mCurrentReturnSys = ReturnSys.登录失败;
     }
     public override void ProcessMessage(ReturnSys sys, string data)
     {
