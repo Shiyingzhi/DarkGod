@@ -159,3 +159,4 @@ D:\Documents\DarkGod\Temp\bin\Debug\UnityEngine.SpatialTracking.xml
 D:\Documents\DarkGod\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 D:\Documents\DarkGod\obj\Debug\Assembly-CSharp.dll
 D:\Documents\DarkGod\obj\Debug\Assembly-CSharp.pdb
+D:\Documents\DarkGod\Temp\bin\Debug\DarkGodAgreement.dll
