@@ -8,6 +8,20 @@ namespace DarkGodAgreement
     {
         LogonGame,
         Register,
-        EixtGame
+        EixtGame,
+        FindRole,
+        FoundRole,
+        DleRole,
+        SetRole,
+        Perform,
+        JoinCity,
+        SyncLoadRole,
+        SyncMove,
+        SyncMoveStop,
+        IntensifyEquip,
+        WorldTalk,
+        DailyTask,
+        JoinCombart,
+        GetAward
     }
 }

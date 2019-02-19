@@ -9,10 +9,13 @@ namespace MainSever.User
     public class UserDAO
     {
         public int id { get; set; }
-        public UserDAO(int id)
+        public string userid { get; set; }
+        public UserDAO(int id,string userid)
         {
             this.id = id;
+            this.userid = userid;
         }
+
 
     }
 }

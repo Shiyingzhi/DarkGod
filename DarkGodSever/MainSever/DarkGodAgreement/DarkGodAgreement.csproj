@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller.cs" />
+    <Compile Include="Profession.cs" />
     <Compile Include="ReturnSys.cs" />
     <Compile Include="GameSys.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

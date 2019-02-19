@@ -8,6 +8,11 @@ namespace DarkGodAgreement
     {
         登录,
         注册,
-        退出游戏
+        退出游戏,
+        任务,
+        同步,
+        强化,
+        聊天,
+        奖励
     }
 }

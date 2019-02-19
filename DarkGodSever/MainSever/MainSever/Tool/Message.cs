@@ -35,7 +35,7 @@ namespace MainSever.Tool
                 if (dateLingth - 4 >= count)
                 {
                     string str = Encoding.UTF8.GetString(date, 4, count);
-                    Console.WriteLine("分割前的数据"+str);
+                    //Console.WriteLine("分割前的数据"+str);
                     string[] strArray = str.Split('|');
                     GameSys gameSys = (GameSys)int.Parse(strArray[0]);
                     MethodController Controller = (MethodController)int.Parse(strArray[1]);
@@ -54,7 +54,7 @@ namespace MainSever.Tool
         }
         public static byte[] PackData(ReturnSys sys, string data)
         {
-            Console.WriteLine("返回给客户端的数据"+sys.ToString()+"||" +data);
+            //Console.WriteLine("返回给客户端的数据"+sys.ToString()+"||" +data);
 
             string retSys = ((int)sys).ToString();
             string dataStr = string.Format("字节{0}|{1}", retSys, data);

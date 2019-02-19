@@ -6,14 +6,16 @@ using System.Net;
 using DarkGodAgreement;
 using MainSever.Controller;
 using MainSever.MySql;
+using MainSever.User;
 namespace MainSever
 {
     public class Server
     {
         Socket ServerSoc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-        List<Client> ClientList = new List<Client>();
+        public List<Client> ClientList = new List<Client>();
         ManageController MainController = new ManageController();
         List<int> userIdList = new List<int>();
+        public int PlayerCount { get; set; }
         /// <summary>
         /// 开启服务器
         /// </summary>
@@ -36,6 +38,10 @@ namespace MainSever
             Socket ClientSoc = Server.EndAccept(ar);
             Client ConnectClinet = new Client(this,ClientSoc);
             ClientList.Add(ConnectClinet);
+            foreach (Client item in ClientList)
+            {
+                item.ClientList = ClientList;
+            }
             Console.Write("当前在线人数:");
             Console.WriteLine(ClientList.Count);
             //SendClient(ConnectClinet, ReturnSys.登录成功, "登录成功");
@@ -62,12 +68,13 @@ namespace MainSever
                 userIdList.Remove(client.User.id);
             Console.Write("当前在线人数:");
             Console.WriteLine(ClientList.Count);
-            //if (client != null && client.ClientSocket.Connected)
-            //{
-            //    client.ClientSocket.Shutdown(SocketShutdown.Both);
-            //    System.Threading.Thread.Sleep(10);
-            //    client.Close();
-            //}
+            PlayerCount--;
+            if (client != null && client.ClientSocket.Connected)
+            {
+                client.ClientSocket.Shutdown(SocketShutdown.Both);
+                System.Threading.Thread.Sleep(10);
+                client.Close();
+            }
             
         }
         /// <summary>
@@ -99,5 +106,22 @@ namespace MainSever
             }
             
         }
+
+        public void SendAllClient(Client client,string data,ReturnSys sys)
+        {
+            for (int i = 0; i < ClientList.Count; i++)
+            {
+                if (ClientList[i] == client)
+                {
+                    Console.WriteLine("自己客户端不发送消息");
+                }
+                else
+                {
+                    Console.WriteLine("发送给所有客户端命令" + sys.ToString());
+                    ClientList[i].SendMassageSys(sys, data);
+                }
+            }
+        }
+
     }
 }

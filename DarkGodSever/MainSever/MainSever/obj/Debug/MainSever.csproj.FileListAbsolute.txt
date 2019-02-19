@@ -6,3 +6,7 @@ D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\obj\Debug\MainSever.pdb
 D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\bin\Debug\DarkGodAgreement.dll
 D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\bin\Debug\DarkGodAgreement.pdb
 D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\bin\Debug\MainSever.exe.config
+D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\bin\Debug\MainSever.exe.manifest
+D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\bin\Debug\MainSever.application
+D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\obj\Debug\MainSever.exe.manifest
+D:\Documents\DarkGod\DarkGodSever\MainSever\MainSever\obj\Debug\MainSever.application
