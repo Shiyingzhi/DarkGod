@@ -4,6 +4,14 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 
+public class AutoGuideCfg : BaseDate<AutoGuideCfg>
+{
+    public int npcID;
+    public string dilogArr;
+    public int actID;
+    public int coin;
+    public int exp;
+}
 
 public class MapCfg : BaseDate<MapCfg>
 {
@@ -15,6 +23,20 @@ public class MapCfg : BaseDate<MapCfg>
     public Vector3 mPlayerRote;
     
 }
+
+public class StrongCfg : BaseDate<StrongCfg>
+{
+    public int mPos;
+    public int mStarlv;
+    public int mAddhp;
+    public int mAddhurt;
+    public int mAdddef;
+    public int mMinlv;
+    public int mCoin;
+    public int mCrystal;
+
+}
+
 public class BaseDate<T>
 {
     public int ID;

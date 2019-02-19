@@ -30,6 +30,7 @@ public class RegisterWin : UIWinBase {
     /// </summary>
     public void OnCloseClick()
     {
+        AudioSvc.instance.PlayButClip(GameConstant.ButOnClick);
         LogonSys.instance.mRegisterWin.isShow(false);
         LogonSys.instance.mLoginWin.isShow();
     }
@@ -38,6 +39,7 @@ public class RegisterWin : UIWinBase {
     /// </summary>
     public void OnRegisterButClick()
     {
+        AudioSvc.instance.PlayButClip(GameConstant.ButOnClick);
         if (mInpUser.text != "" && mInpPassword.text != "" || mInpRegisterPassword.text != "")
         {
             if (mInpPassword.text == mInpRegisterPassword.text)

@@ -7,6 +7,8 @@ public class AudioSvc : MonoBehaviour {
 
     public AudioSource bgAduio;
     public AudioSource butAduio;
+    public AudioSource roleAudio;
+    public AudioSource monsAudio;
     /// <summary>
     /// 初始化音乐服务
     /// </summary>
@@ -16,13 +18,14 @@ public class AudioSvc : MonoBehaviour {
     /// </summary>
     /// <param name="name"></param>
     /// <param name="isLoop"></param>
-    public void PlayBgClip(string name, bool isLoop)
+    public void PlayBgClip(string name, bool isLoop,float val = 0.5f)
     {
         if (bgAduio.clip == null || bgAduio.name != name)
         {
             AudioClip clip = ResSvc.intance.LoadCiip(name,true);
             bgAduio.clip = clip;
             bgAduio.loop = isLoop;
+            bgAduio.volume = val;
             bgAduio.Play();
         }
     }
@@ -35,5 +38,21 @@ public class AudioSvc : MonoBehaviour {
         AudioClip clip = ResSvc.intance.LoadCiip(name, true);
         butAduio.clip = clip;
         butAduio.Play();
+    }
+
+    public void PlayRoleClip(string name,float val =1)
+    {
+        AudioClip clip = ResSvc.intance.LoadCiip(name, true);
+        roleAudio.clip = clip;
+        roleAudio.volume = val;
+        roleAudio.Play();
+    }
+
+    public void PlayElseClip(string name, float val = 1)
+    {
+        AudioClip clip = ResSvc.intance.LoadCiip(name, true);
+        monsAudio.clip = clip;
+        monsAudio.volume = val;
+        monsAudio.Play();
     }
 }

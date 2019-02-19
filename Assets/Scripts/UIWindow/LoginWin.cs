@@ -12,7 +12,6 @@ public class LoginWin : UIWinBase {
     /// </summary>
     protected override void InitWin()
     {
-        AudioSvc.instance.PlayBgClip(GameConstant.BgLogon, true); 
         if (PlayerPrefs.HasKey("User") && PlayerPrefs.HasKey("Pass"))
         {
             mInputUser.text = PlayerPrefs.GetString("User");

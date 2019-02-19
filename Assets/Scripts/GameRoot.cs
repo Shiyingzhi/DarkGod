@@ -8,12 +8,13 @@ using System;
 using DarkGodAgreement;
 
 public class GameRoot : MonoBehaviour {
-    public static GameRoot intance = null;
+    public static GameRoot instance = null;
     public LoginWin mLogonWin;
     public LoadingWin mLoadingWin;
     public HintWin mHintWin;
 
     public Action mRetrueAction = null;
+    public Action mSyncMoveAction = null;
 
     private LogonSys mLogonSys;
     private ResSvc mResSvc;
@@ -21,15 +22,18 @@ public class GameRoot : MonoBehaviour {
     private NetSvc mNetSvc;
     private ControllerManage mControllerMag;
     private MainGameSys mMainGameSys;
-
-    private int id;
-    public int ID { get { return id; } set { id = value; } }
+    private CombatSys mCombatSys;
+    //玩家当前账号信息
+    public UserDAO mUser = null;
+    public List<RoleDAO> mRoleList = new List<RoleDAO>();
+    public RoleDAO mCurrentRole = null;
+    public 
     /// <summary>
     /// 游戏总启动
     /// </summary>
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
-        intance = this;
+        instance = this;
         InitCanvas();
         Init();
 
@@ -68,6 +72,9 @@ public class GameRoot : MonoBehaviour {
 
         mMainGameSys = GetComponent<MainGameSys>();
         mMainGameSys.InitMainGameSys();
+
+        mCombatSys = GetComponent<CombatSys>();
+        mCombatSys.InitCombatSys();
         //初始化控制器模块
         mControllerMag = new ControllerManage();
         mControllerMag.InitController();
@@ -75,7 +82,6 @@ public class GameRoot : MonoBehaviour {
 
         //进入登录系统
         mLogonSys.EnterLogin();
-
     }
     /// <summary>
     /// 显示提示
@@ -83,27 +89,43 @@ public class GameRoot : MonoBehaviour {
     /// <param name="str"></param>
     public static void ShowHint(string str)
     {
-        intance.mHintWin.AddHint(str);
+        instance.mHintWin.AddHint(str);
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (mRetrueAction != null)
         {
-            Debug.Log("执行");
             mRetrueAction();
             mRetrueAction = null; 
         }
+        if (mSyncMoveAction != null)
+        {
+            mSyncMoveAction();
+            mSyncMoveAction = null; 
+        }
     }
+
+    
 
     /// <summary>
     /// 向服务器发送退出请求
     /// </summary>
     void OnDestroy()
     {
-        mNetSvc.SendSys(GameSys.退出游戏, MethodController.EixtGame, ID.ToString());
+        try
+        {
+            mNetSvc.SendSys(GameSys.退出游戏, MethodController.EixtGame, mUser.name);
 
-        NetSvc.instance.CloseClient();
-        
+            NetSvc.instance.CloseClient();
+
+        }
+        catch(Exception e)
+        {
+            Debug.Log(e);
+            Debug.Log("关闭客户端");
+        }
     }
+     
+    
 }

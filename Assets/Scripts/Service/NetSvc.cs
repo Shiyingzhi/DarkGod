@@ -6,9 +6,9 @@ using System.Net.Sockets;
 using System;
 using DarkGodAgreement;
 using System.Text;
-
 public class NetSvc : MonoBehaviour {
-
+    private string localIp = "127.0.0.1";
+    //private string publicNetworkIp = "134.175.106.183";
     public static NetSvc instance;
     Socket ClientSoc = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
     private byte[] data = new byte[1024];
@@ -18,7 +18,7 @@ public class NetSvc : MonoBehaviour {
     public void InitSvc()
     {
         instance = this;
-        ClientSoc.Connect(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 5684));
+        ClientSoc.Connect(new IPEndPoint(IPAddress.Parse(localIp), 5684));
         ClientSoc.BeginReceive(data, 0, data.Length, SocketFlags.None, AsyncReceive, ClientSoc);
         Debug.Log("建立连接");
     }
@@ -50,7 +50,7 @@ public class NetSvc : MonoBehaviour {
     /// <param name="str"></param>
     public void SendSys(GameSys sys,MethodController controller,string str)
     {
-        string strByte = string.Format("{0}|{1}|{2}", ((int)controller).ToString(), ((int)sys).ToString(), str);
+        string strByte = string.Format("{0}|{1}|{2}", ((int)sys).ToString(),((int)controller).ToString() , str);
         Debug.Log(strByte);
         ClientSoc.Send(Tool.GetBytes(strByte));
     }
@@ -73,4 +73,6 @@ public class NetSvc : MonoBehaviour {
 
         }
     }
+
+    
 }

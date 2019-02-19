@@ -8,4 +8,12 @@
 		<playerBornPos>22,-1.1,45</playerBornPos>
 		<playerBornRote>0,0,0</playerBornRote>
 	</item>
+  <item ID="10001">
+    <mapName>无法之地</mapName>
+    <sceneName>SceneCombat</sceneName>
+    <mainCamPos>-10.808,5.95661,0.75908</mainCamPos>
+    <mainCamRote>33.554,134.81,0</mainCamRote>
+    <playerBornPos>-6.199,-1.023,-4.34</playerBornPos>
+    <playerBornRote>0,174.56,0</playerBornRote>
+  </item>
 </root>

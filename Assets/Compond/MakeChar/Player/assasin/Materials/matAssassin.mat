@@ -4,7 +4,7 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: matAssassin
   m_Shader: {fileID: 4800000, guid: c1b85752f6385ad47b9ae693822b4990, type: 3}

@@ -22,6 +22,18 @@ public class UIWinBase : MonoBehaviour {
             RelWin();
         }
     }
+
+    public void isTalk(bool isShow = true)
+    {
+        if (isShow == true)
+        {
+            InitWin();
+        }
+        else
+        {
+            RelWin();
+        }
+    }
     /// <summary>
     /// 初始化UI
     /// </summary>
